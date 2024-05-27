@@ -151,24 +151,41 @@ void DisplayDecisions()
     }
     Console.WriteLine();
 }
+
 void DisplayPoints()
 {
-    if (pointDecisions.Count == 0) { Console.WriteLine("No decisions have been added"); }
+    if (pointDecisions.Count == 0)
+    {
+        Console.WriteLine("No decisions have been added");
+    }
     else
     {
-        Console.WriteLine("\nDecisions and their points:");
-        foreach (var decision in pointDecisions)
+     //   Console.WriteLine("\nDecisions and their points:");
+
+        int maxValue = pointDecisions.Values.Max();
+        int minValue = pointDecisions.Values.Min();
+
+        var sortedDecisions = pointDecisions.OrderByDescending(d => d.Value);
+
+        foreach (var decision in sortedDecisions)
         {
+            if (decision.Value == maxValue)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+            }
+            else if (decision.Value == minValue)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+            }
+
             Console.WriteLine($"{decision.Key}: {decision.Value} points");
-           // MeasurePoints(decision.Key, decision.Value);
+
+            Console.ResetColor();
         }
-    } Console.WriteLine();
+    }
+    Console.WriteLine();
 }
 
-void MeasurePoints()
-{
-    var decision = "";
-} 
 
 void DecisionBattle()
 {
