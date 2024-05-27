@@ -154,14 +154,9 @@ void DisplayDecisions()
 
 void DisplayPoints()
 {
-    if (pointDecisions.Count == 0)
-    {
-        Console.WriteLine("No decisions have been added");
-    }
+    if (pointDecisions.Count == 0) { Console.WriteLine("No decisions have been added"); }
     else
     {
-     //   Console.WriteLine("\nDecisions and their points:");
-
         int maxValue = pointDecisions.Values.Max();
         int minValue = pointDecisions.Values.Min();
 
@@ -186,7 +181,6 @@ void DisplayPoints()
     Console.WriteLine();
 }
 
-
 void DecisionBattle()
 {
     if (decisions.Count < 2) { Console.WriteLine("A minimum of two decisions is required"); }
@@ -206,14 +200,15 @@ void DecisionBattle()
             Console.WriteLine($"Decision {decisions[1]} wins this battle and proceedes to the next round!");
             decisions.Remove(decisions[0]);
         }
-        else { Console.WriteLine("Invalid input. Enter a number 1 or 2"); } 
+        else { Console.WriteLine("Invalid input. Enter a number 1 or 2"); }
         Winner();
     }
 }
 
 void Winner()
 {
-    if (decisions.Count == 1) {
+    if (decisions.Count == 1)
+    {
         Console.ForegroundColor = ConsoleColor.Green;
         Console.WriteLine($"decision {decisions[0]} is the winner!");
         Console.ForegroundColor = ConsoleColor.Gray;
